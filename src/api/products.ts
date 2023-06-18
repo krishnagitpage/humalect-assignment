@@ -11,3 +11,10 @@ export const getAll = async (limit?: number, skip?: number) => {
     const response = await base.get(url);
     return response.data;
 }
+
+export const getOne = async (productId: string) => {
+    let url = `products/${productId}`;
+
+    const response = await base.get(url);
+    return response.data;
+}

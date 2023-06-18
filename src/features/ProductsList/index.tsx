@@ -23,7 +23,7 @@ const ProductsList = ({layoutType}: ProductsListProps) => {
     isPreviousData
   } = useQuery("products", () => getAll());
 
-  if (isLoading) return <div>Loading Users</div>
+  if (isLoading) return <div>Loading Data</div>
 
   if (isError) return <div>Error while fetching: </div>
 

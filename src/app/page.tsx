@@ -4,7 +4,6 @@ import Container from "@/components/Container";
 import Paginate from "@/components/Paginate";
 import LayoutChange from "@/features/LayoutChange";
 import ProductsList from "@/features/ProductsList";
-import ReactPaginate from "react-paginate";
 
 export default function Home() {
 
