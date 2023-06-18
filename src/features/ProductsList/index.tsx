@@ -1,19 +1,26 @@
 import ProductsGrid from "./ProductsGrid";
 import ProductsTable from "./ProductsTable";
 
-import { useQuery, useQueryClient } from "react-query";
+import { dehydrate, useQuery } from "react-query";
 import { getAll } from "@/api/products";
 import { calcDiscountPrice } from "@/utils";
 
-import { useState } from "react";
+import CardList from "@/components/Skeletons/CardList";
+
+import getQueryClient from "@/utils/getQueryClient";
+import Hydrate from "@/utils/HydrateClient";
 
 type ProductsListProps = {
     layoutType: "table" | "grid",
 }
 
-const ProductsList = ({layoutType}: ProductsListProps) => {
+const ProductsList = async ({layoutType}: ProductsListProps) => {
   
-  const queryClient = useQueryClient();
+  const queryClient = getQueryClient();
+
+  await queryClient.prefetchQuery(["posts"], () => getAll());
+
+  const dehydratedState = dehydrate(queryClient);
 
   const {
     isLoading,
@@ -23,9 +30,9 @@ const ProductsList = ({layoutType}: ProductsListProps) => {
     isPreviousData
   } = useQuery("products", () => getAll());
 
-  if (isLoading) return <div>Loading Data</div>
+  if (isLoading || isFetching) return <CardList cards={6}/>
 
-  if (isError) return <div>Error while fetching: </div>
+  if (isError) return <div>Error while fetching</div>
 
   const formatData = (data: any[]) => {
     return data.map(item => {
@@ -42,11 +49,13 @@ const ProductsList = ({layoutType}: ProductsListProps) => {
 
   return (
     <>
+      <Hydrate state={dehydratedState}>
         {
             layoutType == "table" ? 
             <ProductsTable data = {formatData(data.products)} /> :
             <ProductsGrid data = {formatData(data.products)} />
         }
+        </Hydrate>
     </>
 
   )

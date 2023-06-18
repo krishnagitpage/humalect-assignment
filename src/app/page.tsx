@@ -13,7 +13,7 @@ export default function Home() {
       <Container className = "pt-5">
         <div className="flex justify-between mb-5">
           <LayoutChange />
-          <Paginate total = {100} limit = {10} onPageChange={() => {}}/>
+          <Paginate total = {100} limit = {10} forcePage = {1} onPageChange={() => {}}/>
         </div>
         <div className="max-h-[500px] overflow-x-auto overflow-y-scroll border">
           <ProductsList layoutType="grid"/>

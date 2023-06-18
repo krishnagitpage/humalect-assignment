@@ -27,12 +27,6 @@ const Radio = ({
     className
   );
 
-  const attr:any = {};
-
-  if (checked) {
-    attr["checked"] = "checked";
-  }
-
   return (
     <>
       
@@ -45,7 +39,8 @@ const Radio = ({
             name={name}
             value = {value}
             onChange={onChange}
-            {...attr}
+            // {...attr}
+            defaultChecked = {checked}
           />
           <span className='ml-2'>{label}</span>
       </label>

@@ -15,6 +15,8 @@ function LayoutChange({
     handleChange
 }: LayoutChangeProps) {
 
+    console.log("build once")
+
     const layoutOptions = [
         { value: "grid", label: "Grid" },
         { value: "table", label: "Table" }

@@ -1,5 +1,5 @@
-import { useState } from "react"
-import SkeletonImage from "../Skeletons/Image";
+"use client";
+
 import Image from "next/image";
 import { calcDiscountPrice } from "@/utils";
 import ProgressBar from "../ProgressBar";
@@ -19,22 +19,13 @@ const ProductCardFull = ({data}: any) => {
         <div className='img-container'>
           <div className="text-center mb-3 text-6x1 font-semibold">{data.title}</div>
           <div className="h-[200px] w-[200px] relative">
-              <img
-                src="public/imagePlaceholder.jpeg"
-                width={200}
-                height={200}
-              />
               <Image
                 src={data.thumbnail}
                 alt = {data.thumbnail}
                 fill={true}
-                className="rounded-lg"
-                // width={300}
-                // height={300}
+                className= "rounded-lg"
               />
           </div>
-
-          
         </div>
         <div className="w-full">
             <div className="space-y-3">
