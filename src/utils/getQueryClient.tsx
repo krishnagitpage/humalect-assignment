@@ -1,13 +1,11 @@
 import { QueryClient } from "react-query";
 
-import { cache } from "react";
-
-const getQueryClient = cache(() => new QueryClient({
+const getQueryClient = () => new QueryClient({
     defaultOptions: {
         queries: {
-            refetchOnWindowFocus: false, // default: true
+            refetchOnWindowFocus: false,
         },
     }
-}));
+});
 
 export default getQueryClient;

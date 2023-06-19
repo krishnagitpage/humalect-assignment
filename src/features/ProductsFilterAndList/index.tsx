@@ -6,7 +6,6 @@ import ProductsList from "../ProductsList";
 import Paginate from "@/components/Paginate";
 import LayoutChange from "../LayoutChange";
 
-import getQueryClient from "@/utils/getQueryClient";
 import { useQuery } from "react-query";
 import { getAll } from "@/api/products";
 
@@ -15,9 +14,6 @@ const ProductsFilterAndList = () => {
   const [layoutType, setLayoutType] = useState<'grid' | 'table'>('grid');
   const [currentPage, setCurrentPage] = useState(0);
   
-  const queryClient = getQueryClient();
-
-
   const onPageChange = (selected: number) => {
     setCurrentPage(selected);
   }

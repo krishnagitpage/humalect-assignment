@@ -3,12 +3,9 @@
 import ProductsGrid from "./ProductsGrid";
 import ProductsTable from "./ProductsTable";
 
-import { useQuery, useQueryClient } from "react-query";
+import { useQuery } from "react-query";
 import { getAll } from "@/api/products";
-import { addCurrencySymbol, calcDiscountPrice } from "@/utils";
 import CardList from "@/components/Skeletons/CardList";
-import { ProductType } from "@/types/ProductTypes";
-import getQueryClient from "@/utils/getQueryClient";
 
 type ProductsListProps = {
   layoutType: "table" | "grid",
@@ -17,7 +14,6 @@ type ProductsListProps = {
 }
 
 const ProductsList = ({ layoutType, currentPage, limitPerRow }: ProductsListProps) => {
-  const queryClient = getQueryClient();
 
   const {
     isLoading,

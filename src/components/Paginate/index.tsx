@@ -34,7 +34,7 @@ export default function Paginate({
       forcePage={forcePage}
 
       className="inline-flex items-center -space-x-px"
-      activeLinkClassName="px-3 py-2 ml-0 leading-tight text-light-600 border border-gray-300 bg-blue-400 hover:bg-blue-500"
+      activeLinkClassName="bg-blue-400 hover:bg-blue-500 px-3 py-2 ml-0 leading-tight text-light-600 border border-gray-300"
       previousClassName="block px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:text-gray-700 hover:bg-gray-100"
       pageLinkClassName="px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300  hover:bg-gray-100"
       nextClassName="block px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:text-gray-700 hover:bg-gray-100"
