@@ -3,16 +3,15 @@
 import Container from '@/components/Container'
 import { useParams } from 'next/navigation';
 
-import { useQuery } from "react-query";
+import { useQuery, useQueryClient } from "react-query";
 import { getOne } from "@/api/products";
 import CardImage from '@/components/Skeletons/CardImage';
 
 import ProductCardFull from "@/components/ProductCardFull"
-import getQueryClient from '@/utils/getQueryClient';
 
 const page = () => {
 
-  const queryClient = getQueryClient();
+  const queryClient = useQueryClient();
 
   const params = useParams();
   const { productId } = params;

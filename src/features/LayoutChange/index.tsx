@@ -27,7 +27,7 @@ function LayoutChange({
         if (!["table", "grid"].includes(val)) {
            throw new Error("Unknown parameter"); 
         }
-        // return handleChange(val as "table" | "grid");
+        return handleChange(val as "table" | "grid");
     }
 
     return (
