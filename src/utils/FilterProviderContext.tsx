@@ -30,14 +30,16 @@ type FilterProviderProps = {
 export const FilterProvider: React.FC<FilterProviderProps> = ({ children }) => {
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
-  const [layoutType, setLayoutType] = useState("table");
+  const [layoutType, setLayoutType] = useState("grid");
+
+  const _layoutType = layoutType as LayoutType;
 
   const contextValue: FilterContextType = {
     page,
     setPage,
     pageSize,
     setPageSize,
-    layoutType,
+    layoutType: _layoutType,
     setLayoutType,
   };
 

@@ -1,3 +1,4 @@
+import { ProductType } from "@/types/ProductTypes";
 import axios from "axios";
 
 const base = axios.create({

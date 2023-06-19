@@ -1,5 +1,7 @@
 "use client";
 
+import React from "react";
+
 import { useFilterContext } from "@/utils/FilterProviderContext"
 import ProductsList from "../ProductsList";
 import Paginate from "@/components/Paginate";
@@ -10,12 +12,13 @@ const ProductsFilterAndList = () => {
   const layoutChange = (layout: "table" | "grid") => {
     setLayoutType(layout);
   }
-
+  console.log("component productfilterandlist load");
   return (
     <>
         <div className="flex justify-between mb-5">
             <LayoutChange 
                 handleChange={layoutChange}
+                layoutType = {layoutType}
             />
             <Paginate total = {100} limit = {10} onPageChange={() => {}}/>
         </div>
@@ -26,4 +29,4 @@ const ProductsFilterAndList = () => {
   )
 }
 
-export default ProductsFilterAndList
+export default ProductsFilterAndList;

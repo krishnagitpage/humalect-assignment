@@ -8,15 +8,14 @@ enum LayoutType {
 }
 
 type LayoutChangeProps = {
-    handleChange?: (val: "table" | "grid", e?: React.ChangeEvent<HTMLInputElement>) => void;
+    handleChange: (val: "table" | "grid", e?: React.ChangeEvent<HTMLInputElement>) => void;
+    layoutType: "table" | "grid"
 }
 
 function LayoutChange({
     handleChange
 }: LayoutChangeProps) {
-
-    console.log("build once")
-
+    console.log("layoutchange component loaded")
     const layoutOptions = [
         { value: "grid", label: "Grid" },
         { value: "table", label: "Table" }
@@ -29,6 +28,8 @@ function LayoutChange({
         }
         return handleChange(val as "table" | "grid");
     }
+
+    console.log("layout change rerender")
 
     return (
         <div className="flex space-x-2 items-center">

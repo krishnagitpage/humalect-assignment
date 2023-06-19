@@ -5,15 +5,12 @@ import ProductsFilterAndList from "@/features/ProductsFilterAndList";
 import { FilterProvider } from "@/utils/FilterProviderContext";
 
 export default function Home() {
-
-  const limitPerRow = 10;
-
+  console.log("Home reload")
   return (
       <Container className = "pt-5">
         <FilterProvider>
           <ProductsFilterAndList/>
         </FilterProvider>
       </Container>
-
   )
 }

@@ -12,9 +12,11 @@ type ProductsListProps = {
 }
 
 import CardList from "@/components/Skeletons/CardList";
-const ProductsList = ({layoutType}: ProductsListProps) => {
+import { ProductType } from "@/types/ProductTypes";
+const ProductsList = ({ layoutType }: ProductsListProps) => {
   
-  const queryClient = useQueryClient();
+  // const queryClient = useQueryClient();
+  console.log("Products list rerender");
 
   const {
     isLoading,
@@ -27,7 +29,8 @@ const ProductsList = ({layoutType}: ProductsListProps) => {
 
   if (isError) return <div>Error while fetching</div>
 
-  const formatData = (data: any[]) => {
+
+  const formatData = (data: ProductType[]) => {
     return data.map(item => {
       const { price , discountPercentage } = item;
       
