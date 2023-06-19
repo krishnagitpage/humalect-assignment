@@ -2,8 +2,6 @@
 
 import clsx from 'clsx';
 
-import { generateId } from '@/utils'; // added import here
-
 type RadioProps = {
   name: string;
   value: string;

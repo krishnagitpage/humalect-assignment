@@ -1,32 +1,41 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 
-import { useFilterContext } from "@/utils/FilterProviderContext"
 import ProductsList from "../ProductsList";
 import Paginate from "@/components/Paginate";
 import LayoutChange from "../LayoutChange";
 
-const ProductsFilterAndList = () => {
-  const { layoutType, setLayoutType } = useFilterContext();
-  const layoutChange = (layout: "table" | "grid") => {
+import getQueryClient from "@/utils/getQueryClient";
+
+export default function ProductsFilterAndList () {
+
+  const [layoutType, setLayoutType] = useState<'grid' | 'table'>('grid');
+  const [currentPage, setCurrentPage] = useState(0);
+  const queryClient = getQueryClient();
+
+  const limitPerRow = 10;
+
+  const onPageChange = (selected: number) => {
+    setCurrentPage(selected);
+  }
+
+  const handleLayoutChange = (layout: "grid" | "table") => {
     setLayoutType(layout);
   }
-  console.log("component productfilterandlist load");
+
   return (
     <>
         <div className="flex justify-between mb-5">
             <LayoutChange 
-                handleChange={layoutChange}
+                handleChange={handleLayoutChange}
                 layoutType = {layoutType}
             />
-            <Paginate total = {100} limit = {10} onPageChange={() => {}}/>
+            <Paginate total = {100} limit = {limitPerRow} onPageChange={onPageChange}/>
         </div>
         <div className="max-h-[500px] overflow-x-auto overflow-y-scroll border">
-            <ProductsList layoutType = {layoutType} />
+            <ProductsList layoutType = {layoutType} currentPage = {currentPage} limitPerRow = {limitPerRow}/>
         </div>
     </>
   )
 }
-
-export default ProductsFilterAndList;

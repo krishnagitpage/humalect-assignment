@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { calcDiscountPrice } from "@/utils";
 import ProgressBar from "../ProgressBar";
+import { ProductType } from "@/types/ProductTypes";
 
 const columns = [
   { key : "id", title: "Id" },
@@ -12,7 +13,13 @@ const columns = [
   { key : "discountPrice", title: "Discount Price" },
 ];
 
-const ProductCardFull = ({data}: any) => {
+type ProductCardFullProps = {
+  data: ProductType
+}
+
+const ProductCardFull = ({ data }: ProductCardFullProps) => {
+  const loadingClasses = ["bg-gray-400", "animate-pulse"];
+  const classNames = `rounded-lg ${loadingClasses.join(" ")}`;
 
   return (
     <div className="flex justify-between items-center p-5 space-x-5">
@@ -23,7 +30,10 @@ const ProductCardFull = ({data}: any) => {
                 src={data.thumbnail}
                 alt = {data.thumbnail}
                 fill={true}
-                className= "rounded-lg"
+                className= {classNames}
+
+                onLoadingComplete={ (img: HTMLImageElement) => 
+                  loadingClasses.forEach(className => img.classList.remove(className)) }
               />
           </div>
         </div>

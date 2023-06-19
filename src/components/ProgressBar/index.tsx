@@ -1,6 +1,6 @@
 type ProgressBarProps = {
     percentage: number,
-    value?: string,
+    value?: string | number,
     label?: string
 }
 const ProgressBar = ({percentage, value, label}: ProgressBarProps) => {

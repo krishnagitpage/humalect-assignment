@@ -1,33 +1,42 @@
+import { ProductType } from '@/types/ProductTypes';
+import { addCurrencySymbol, calcDiscountPrice } from '@/utils';
 import clsx from 'clsx';
 
 import Link from 'next/link';
 
 type ProductsTableProps = {
-    data: any[]
+    data: ProductType[]
 }
+
+type ColumnKeys = "id" | "title" | "category" | "formatPrice" | "discountPrice";
+
+type column = { key: ColumnKeys, title: string };
 
 const ProductsTable = ({ data }: ProductsTableProps) => {
 
-  const columns = [
+
+  const columns: column[] = [
     { key : "id", title: "Id" },
     { key : "title", title: "Title" },
     { key : "category", title: "Category" },
-    { key : "price", title: "Price" },
+    { key : "formatPrice", title: "Price" },
     { key : "discountPrice", title: "Discount Price" },
-    
   ];
 
-  const renderTableCell = (key: string, listItem: any) => {
-    const { id } = listItem;
+  const renderTableCell = (key: ColumnKeys, listItem: ProductType) => {
+    const { id, price, discountPercentage } = listItem;
 
     if (key == "title") {
       return <Link href = {`products/${id}`}>{listItem[key]}</Link>
-    }
-
+    } else if (key == "formatPrice") {
+      return addCurrencySymbol(price);
+    } else if (key == "discountPrice") {
+      return addCurrencySymbol(calcDiscountPrice(price, discountPercentage))
+    } 
     return listItem[key];
   }
 
-  const renderTableRow = (listItem: any, i: number) => {
+  const renderTableRow = (listItem: ProductType, i: number) => {
     return (
       <tr key = {i}>
         {columns.map(({key}) => {

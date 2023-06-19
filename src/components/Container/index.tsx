@@ -21,6 +21,7 @@ const Container: React.FC<ContainerProps> = ({ children, className = "", ...rest
   return ( 
     <div
       className={classNames}
+      {...rest}
     >
       {children}
     </div>

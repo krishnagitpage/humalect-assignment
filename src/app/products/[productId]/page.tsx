@@ -19,7 +19,7 @@ const page = () => {
     isLoading,
     isError,
     data,
-  } = useQuery(`products/${productId}`, () => getOne(productId));
+  } = useQuery(["products", { id: productId }], () => getOne(productId));
   
   if (isLoading) return <Container className='mt-5 '><CardImage /></Container>
 
