@@ -14,7 +14,6 @@ type column = { key: ColumnKeys, title: string };
 
 const ProductsTable = ({ data }: ProductsTableProps) => {
 
-
   const columns: column[] = [
     { key : "id", title: "Id" },
     { key : "title", title: "Title" },

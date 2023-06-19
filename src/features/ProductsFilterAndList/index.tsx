@@ -7,14 +7,16 @@ import Paginate from "@/components/Paginate";
 import LayoutChange from "../LayoutChange";
 
 import getQueryClient from "@/utils/getQueryClient";
+import { useQuery } from "react-query";
+import { getAll } from "@/api/products";
 
-export default function ProductsFilterAndList () {
+const ProductsFilterAndList = () => {
 
   const [layoutType, setLayoutType] = useState<'grid' | 'table'>('grid');
   const [currentPage, setCurrentPage] = useState(0);
+  
   const queryClient = getQueryClient();
 
-  const limitPerRow = 10;
 
   const onPageChange = (selected: number) => {
     setCurrentPage(selected);
@@ -24,6 +26,19 @@ export default function ProductsFilterAndList () {
     setLayoutType(layout);
   }
 
+  const {
+    isLoading,
+    isError,
+    data,
+  } = useQuery(["products-total", ], () => getAll(1, 0));
+  
+  if (isLoading) return "Loading";
+
+  if (isError) return <>"Failed to fetch"</>;
+
+  const limitPerRow = 10;
+  const total = data.total;
+
   return (
     <>
         <div className="flex justify-between mb-5">
@@ -31,7 +46,7 @@ export default function ProductsFilterAndList () {
                 handleChange={handleLayoutChange}
                 layoutType = {layoutType}
             />
-            <Paginate total = {100} limit = {limitPerRow} onPageChange={onPageChange}/>
+            <Paginate total = {total} limit = {limitPerRow} onPageChange={onPageChange}/>
         </div>
         <div className="max-h-[500px] overflow-x-auto overflow-y-scroll border">
             <ProductsList layoutType = {layoutType} currentPage = {currentPage} limitPerRow = {limitPerRow}/>
@@ -39,3 +54,5 @@ export default function ProductsFilterAndList () {
     </>
   )
 }
+
+export default ProductsFilterAndList;

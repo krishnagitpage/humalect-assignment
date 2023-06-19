@@ -15,7 +15,6 @@ type LayoutChangeProps = {
 function LayoutChange({
     handleChange
 }: LayoutChangeProps) {
-    console.log("layoutchange component loaded")
     const layoutOptions = [
         { value: "grid", label: "Grid" },
         { value: "table", label: "Table" }
@@ -28,8 +27,6 @@ function LayoutChange({
         }
         return handleChange(val as "table" | "grid");
     }
-
-    console.log("layout change rerender")
 
     return (
         <div className="flex space-x-2 items-center">

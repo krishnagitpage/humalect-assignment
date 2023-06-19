@@ -26,7 +26,6 @@ const ProductsList = ({ layoutType, currentPage, limitPerRow }: ProductsListProp
   } = useQuery([`products`, currentPage], () => getAll(limitPerRow, currentPage * limitPerRow));
 
   if (isLoading) {
-    console.log("loading");
     return <CardList cards={6}/>
   }
 

@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import { calcDiscountPrice } from "@/utils";
 import ProgressBar from "../ProgressBar";

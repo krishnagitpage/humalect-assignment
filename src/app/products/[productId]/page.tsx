@@ -9,7 +9,7 @@ import CardImage from '@/components/Skeletons/CardImage';
 
 import ProductCardFull from "@/components/ProductCardFull"
 
-const page = () => {
+const Page = () => {
 
   const queryClient = useQueryClient();
 
@@ -32,4 +32,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page;
