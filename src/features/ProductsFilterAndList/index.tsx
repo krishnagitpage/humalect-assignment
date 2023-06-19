@@ -46,7 +46,7 @@ const ProductsFilterAndList = () => {
                 handleChange={handleLayoutChange}
                 layoutType = {layoutType}
             />
-            <Paginate total = {total} limit = {limitPerRow} onPageChange={onPageChange}/>
+            <Paginate total = {total} limit = {limitPerRow} onPageChange={onPageChange} forcePage={currentPage} />
         </div>
         <div className="max-h-[500px] overflow-x-auto overflow-y-scroll border">
             <ProductsList layoutType = {layoutType} currentPage = {currentPage} limitPerRow = {limitPerRow}/>
